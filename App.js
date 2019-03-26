@@ -10,9 +10,8 @@
 import React, {Component} from 'react';
 import { Provider } from 'react-redux';
 import {Platform, StyleSheet, Text, View } from 'react-native';
-import Home from './src/Screens/Home';
+import { store, MainApp } from './src/Redux/Store';
 import Amplify from 'aws-amplify';
-import store, { AppWithNavigationState } from './src/Redux/Store/index'
 
 import awsmobile from './src/aws-exports';
 
@@ -25,11 +24,14 @@ Amplify.configure(awsmobile);
 //     'Shake or press menu button for dev menu',
 // });
 
-const App = () => 
-  (
-    <Provider store={store}>
-      <AppWithNavigationState />
-    </Provider>
-  );
+class App extends Component {
+  render() {
+    return (
+      <Provider store={store}>
+        <MainApp />
+      </Provider>
+    )
+  }
+}
 
 export default App;

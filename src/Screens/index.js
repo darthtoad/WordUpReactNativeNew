@@ -10,6 +10,10 @@ import {
     createAppContainer
   } from 'react-navigation';  
 
+  import {
+    createNavigationReducer
+  } from "react-navigation-redux-helpers";  
+
 export const AuthNavigator = createStackNavigator({
     LogIn: { screen: LogInScreen },
     SignUp: { screen: SignUpScreen },
@@ -26,6 +30,6 @@ export const AppNavigator = createStackNavigator({
     Main: { screen: MainNavigator },
 })
 
-// export const AppContainer = createAppContainer(AppNavigator);
+const AppContainer = createNavigationReducer(AppNavigator);
 
-// export default AppContainer;
+export default AppContainer;
